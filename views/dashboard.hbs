@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    {{> header}} <h2>Bienvenido, {{mayusculas user.name}} </h2> 
+    
+    {{#if user.isAdmin}}
+        <p style="color: green;"><b>Acceso de Administrador</b></p>
+    {{/if}}
+
+    <h3>Tus Proyectos:</h3>
+    {{#each projects}}
+        <div style="border: 1px solid #ccc; margin: 10px; padding: 10px;">
+            <h4>{{this.name}}</h4>
+            <ul>
+                {{#each this.tasks}}
+                    <li class="{{priorityClass this.priority}}">{{this.description}} {{this.priority}}</li>
+                {{/each}}
+            </ul>
+        </div>
+    {{/each}}
+  <a href="/">⬅ Volver al inicio</a>
+    {{> footer}} </body>
+</html>
